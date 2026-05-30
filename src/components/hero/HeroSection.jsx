@@ -11,7 +11,7 @@ function HeroSection() {
         <h3 className="font-growland-bold mt-2 font-semibold text-yellow-400">
           CAN YOUR CURRENT SYSTEM KEEP UP?
         </h3>
-        <p className="my-4 text-xl font-medium sm:px-55">
+        <p className="my-4 text-xl sm:px-55">
           We help businesses grow through websites, workflow systems, and
           delivery coordination platforms that improve visibility, streamline
           operations, and create better customer experiences.
