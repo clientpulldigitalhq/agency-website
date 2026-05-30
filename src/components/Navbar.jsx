@@ -10,6 +10,8 @@ function Navbar() {
   useEffect(() => {
     const handleResize = function () {
       setIsDesktop(window.innerWidth > 640);
+
+      setIsMenuOpen(false);
     };
 
     window.addEventListener("resize", handleResize);
@@ -66,7 +68,7 @@ function Navbar() {
           <IoMdMenu size={40} />
         </button>
         <div
-          className={`fixed inset-0 cursor-pointer bg-black/70 backdrop-blur-lg ${isMenuOpen ? "block" : "hidden"}`}
+          className={`fixed inset-0 cursor-pointer bg-black/70 ${isMenuOpen ? "block backdrop-blur-lg" : "hidden backdrop-blur-none"}`}
           onClick={() => setIsMenuOpen(false)}
         ></div>
       </nav>
