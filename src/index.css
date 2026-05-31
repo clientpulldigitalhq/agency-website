@@ -22,3 +22,15 @@ body {
 @utility flex-center {
   @apply flex items-center;
 }
+
+@utility input-container {
+  @apply flex w-full flex-col;
+}
+
+@utility label {
+  @apply mb-4 self-start font-medium;
+}
+
+@utility errorElement {
+  @apply mt-2 self-start font-medium text-red-300;
+}
