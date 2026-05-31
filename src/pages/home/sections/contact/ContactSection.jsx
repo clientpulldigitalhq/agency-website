@@ -1,6 +1,6 @@
 import { ContactForm } from "./ContactForm";
 
-function ContactSection() {
+export function ContactSection() {
 	return (
 		<section className="px-4 text-center text-white" id="contact">
 			<div>
@@ -10,5 +10,3 @@ function ContactSection() {
 		</section>
 	);
 }
-
-export default ContactSection;
