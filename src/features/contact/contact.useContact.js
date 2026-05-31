@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const isPhone = (value) => /^\d+$/.test(value);
 const isEmail = (value) => value.includes("@");
@@ -11,18 +11,18 @@ export function useContact() {
 	});
 
 	const [formError, setFormError] = useState({
-		nameError: "",
-		emailOrPhoneError: "",
-		messageError: "",
+		name: "",
+		emailOrPhone: "",
+		message: "",
 	});
 
-	const handleSubmit = (e) => {
+	const onSubmit = (e) => {
 		// prevent default behavior of the browser
 		e.preventDefault();
 
 		if (!formData.name.trim()) {
-			setFormError((prevError) => ({
-				...prevError,
+			setFormError((errors) => ({
+				...errors,
 				nameError: "Name is required!",
 			}));
 
@@ -30,26 +30,26 @@ export function useContact() {
 		}
 
 		if (!formData.emailOrPhone.trim()) {
-			setFormError((prevError) => ({
-				...prevError,
-				emailOrPhoneError: "Email Address or Phone Number is required!",
+			setFormError((errors) => ({
+				...errors,
+				emailOrPhone: "Email Address or Phone Number is required!",
 			}));
 
 			return;
 		}
 
 		if (!isPhone(formData.emailOrPhone) && !isEmail(formData.emailOrPhone)) {
-			setFormError((prevError) => ({
-				...prevError,
-				emailOrPhoneError: "It must be an Email Address or a Phone number",
+			setFormError((errors) => ({
+				...errors,
+				emailOrPhone: "It must be an Email Address or a Phone number",
 			}));
 			return;
 		}
 
 		if (!formData.message.trim()) {
-			setFormError((prevError) => ({
-				...prevError,
-				messageError: "Message is required!",
+			setFormError((errors) => ({
+				...errors,
+				message: "Message is required!",
 			}));
 			return;
 		}
@@ -57,16 +57,23 @@ export function useContact() {
 		console.log(formData.message.trim());
 	};
 
-	const onSubmit = (e) => {
-		setFormError({ nameError: "", emailOrPhoneError: "", messageError: "" });
-		const { name, value } = e.target;
-		setFormData((prevData) => ({ ...prevData, [name]: value }));
-	};
+	const register = useCallback(
+		(name) => {
+			return {
+				value: formData[name],
+				onChange: (e) => {
+					setFormError((errors) => ({ ...errors, [name]: "" }));
+					setFormData((formData) => ({ ...formData, [name]: e.target.value }));
+				},
+			};
+		},
+		[formData],
+	);
 
 	return {
 		formData,
 		formError,
 		onSubmit,
-		handleSubmit,
+		register,
 	};
 }

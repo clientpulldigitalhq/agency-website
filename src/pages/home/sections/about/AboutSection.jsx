@@ -1,6 +1,6 @@
 import { ABOUT_AGENCY_INFO } from "./constants";
 
-function AboutSection() {
+export function AboutSection() {
 	return (
 		<section className="text-center text-white" id="about">
 			<h2 className="mt-20 font-semibold text-yellow-400">ABOUT US</h2>
@@ -36,5 +36,3 @@ function AboutSection() {
 		</section>
 	);
 }
-
-export default AboutSection;

@@ -1,7 +1,7 @@
-import { HeroSection } from "../../components/hero/HeroSection";
 import { Navbar } from "../../layouts/Navbar";
 import { AboutSection } from "./sections/about/AboutSection";
 import { ContactSection } from "./sections/contact/ContactSection";
+import { HeroSection } from "./sections/hero/HeroSection";
 import { ServicesSection } from "./sections/services/ServicesSection";
 
 export function HomePage() {

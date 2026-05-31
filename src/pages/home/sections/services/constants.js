@@ -1,3 +1,5 @@
+import { LuMapPin, LuTruck, LuWorkflow } from "react-icons/lu";
+
 export const SERVICES = [
 	{
 		title: "Get found online",

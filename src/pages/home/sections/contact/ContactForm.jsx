@@ -1,7 +1,7 @@
 import { useContact } from "../../../../features/contact/contact.useContact";
 
 export function ContactForm() {
-	const { formData, formError, handleChange, onSubmit } = useContact();
+	const { formError, onSubmit, register } = useContact();
 
 	return (
 		<form className="mx-auto w-full *:mb-6 sm:max-w-120" onSubmit={onSubmit}>
@@ -14,13 +14,10 @@ export function ContactForm() {
 					name="name"
 					id="name"
 					className="rounded-lg border border-white bg-transparent p-4 focus:outline-0"
-					onChange={handleChange}
-					value={formData.name}
+					{...register("name")}
 				/>
 
-				{formError.nameError && (
-					<p className="errorElement">{formError.nameError}</p>
-				)}
+				{formError.name && <p className="errorElement">{formError.name}</p>}
 			</div>
 			<div className="input-container">
 				<label htmlFor="name" className="label">
@@ -31,11 +28,10 @@ export function ContactForm() {
 					name="emailOrPhone"
 					id="email"
 					className="rounded-lg border border-white bg-transparent p-4 focus:outline-0"
-					onChange={handleChange}
-					value={formData.emailOrPhone}
+					{...register("emailOrPhone")}
 				/>
-				{formError.emailOrPhoneError && (
-					<p className="errorElement">{formError.emailOrPhoneError} </p>
+				{formError.emailOrPhone && (
+					<p className="errorElement">{formError.emailOrPhone} </p>
 				)}
 			</div>
 			<div className="input-container">
@@ -48,12 +44,11 @@ export function ContactForm() {
 					name="message"
 					placeholder="Briefly describe your enquiry or service"
 					className="rounded-lg border border-yellow-400 bg-white p-4 text-[#134e4a] focus:outline-0"
-					onChange={handleChange}
-					value={formData.message}
+					{...register("message")}
 				/>
 
-				{formError.messageError && (
-					<p className="errorElement">{formError.messageError}</p>
+				{formError.message && (
+					<p className="errorElement">{formError.message}</p>
 				)}
 			</div>
 
