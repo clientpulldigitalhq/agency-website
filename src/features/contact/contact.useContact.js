@@ -1,68 +1,33 @@
 import { useCallback, useState } from "react";
-
-const isPhone = (value) => /^\d+$/.test(value);
-const isEmail = (value) => value.includes("@");
+import { formatZodIssuesToObject } from "../../shared/libs/formatZodIssuesToObject";
+import { DEFAULT_CONTACT_ERRORS, DEFAULT_CONTACT_PAYLOAD } from "./constants";
+import { contactValidator } from "./contact.validators";
 
 export function useContact() {
-	const [formData, setFormData] = useState({
-		name: "",
-		emailOrPhone: "",
-		message: "",
-	});
+	const [formData, setFormData] = useState({ ...DEFAULT_CONTACT_PAYLOAD });
+	const [formError, setFormError] = useState({ ...DEFAULT_CONTACT_ERRORS });
 
-	const [formError, setFormError] = useState({
-		name: "",
-		emailOrPhone: "",
-		message: "",
-	});
+	const onSubmit = useCallback(
+		(e) => {
+			// prevent default behavior of the browser
+			e.preventDefault();
+			setFormError({ ...DEFAULT_CONTACT_ERRORS });
 
-	const onSubmit = (e) => {
-		// prevent default behavior of the browser
-		e.preventDefault();
-
-		if (!formData.name.trim()) {
-			setFormError((errors) => ({
-				...errors,
-				name: "Name is required!",
-			}));
-
-			return;
-		}
-
-		if (!formData.emailOrPhone.trim()) {
-			setFormError((errors) => ({
-				...errors,
-				emailOrPhone: "Email Address or Phone Number is required!",
-			}));
-
-			return;
-		}
-
-		if (!isPhone(formData.emailOrPhone) && !isEmail(formData.emailOrPhone)) {
-			setFormError((errors) => ({
-				...errors,
-				emailOrPhone: "It must be an Email Address or a Phone number",
-			}));
-			return;
-		}
-
-		if (!formData.message.trim()) {
-			setFormError((errors) => ({
-				...errors,
-				message: "Message is required!",
-			}));
-			return;
-		}
-
-		console.log(formData.message.trim());
-	};
+			const parsed = contactValidator.safeParse(formData);
+			if (!parsed.success)
+				return setFormError(formatZodIssuesToObject(parsed.error.issues));
+			const { data } = parsed;
+			console.log(data);
+		},
+		[formData],
+	);
 
 	const register = useCallback(
 		(name) => {
 			return {
 				value: formData[name],
 				onChange: (e) => {
-					setFormError((errors) => ({ ...errors, [name]: "" }));
+					setFormError((errors) => ({ ...errors, [name]: { message: "" } }));
 					setFormData((formData) => ({ ...formData, [name]: e.target.value }));
 				},
 			};

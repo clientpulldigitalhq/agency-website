@@ -17,7 +17,9 @@ export function ContactForm() {
 					{...register("name")}
 				/>
 
-				{formError.name && <p className="errorElement">{formError.name}</p>}
+				{formError?.name?.message && (
+					<p className="errorElement">{formError.name.message}</p>
+				)}
 			</div>
 			<div className="input-container">
 				<label htmlFor="name" className="label">
@@ -30,8 +32,8 @@ export function ContactForm() {
 					className="rounded-lg border border-white bg-transparent p-4 focus:outline-0"
 					{...register("emailOrPhone")}
 				/>
-				{formError.emailOrPhone && (
-					<p className="errorElement">{formError.emailOrPhone} </p>
+				{formError?.emailOrPhone?.message && (
+					<p className="errorElement">{formError.emailOrPhone.message} </p>
 				)}
 			</div>
 			<div className="input-container">
@@ -47,8 +49,8 @@ export function ContactForm() {
 					{...register("message")}
 				/>
 
-				{formError.message && (
-					<p className="errorElement">{formError.message}</p>
+				{formError?.message?.message && (
+					<p className="errorElement">{formError.message.message}</p>
 				)}
 			</div>
 
