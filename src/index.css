@@ -2,21 +2,28 @@
 
 body {
   background-color: #134e4a;
+  font-family: "Helvetica Regular";
 }
 
 @font-face {
   font-family: "Growland Black";
-  src: url("/fonts/Growland Black.otf");
+  src: url("/fonts/Growland Black.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Growland Black";
-  src: url("/fonts/Growland\ Bold.otf");
+  src: url("/fonts/Growland\ Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Regular";
+  src: url("/fonts/Helvetica.ttf") format("opentype");
 }
 
 @theme {
   --font-growland-black: "Growland Black", sans-serif;
   --font-growland-bold: "Growland Bold", sans-serif;
+  --font-helvetica-regular: "Helvetica Regular", sans-serif;
 }
 
 @utility flex-center {

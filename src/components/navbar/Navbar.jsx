@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <header>
-      <nav className="flex-center justify-between bg-[linear-gradient(to_right,#00cfa2_1%,#081826_100%)] px-4 py-4 text-white shadow-lg sm:px-10">
+      <nav className="flex-center font-helvetica-regular justify-between bg-[linear-gradient(to_right,#00cfa2_1%,#081826_100%)] px-4 py-4 text-white shadow-lg sm:px-10">
         <div className="bg-green-100 p-1 text-gray-700">LOGO</div>
         <motion.div
           initial={false}
