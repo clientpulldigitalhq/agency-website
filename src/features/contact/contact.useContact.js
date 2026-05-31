@@ -23,7 +23,7 @@ export function useContact() {
 		if (!formData.name.trim()) {
 			setFormError((errors) => ({
 				...errors,
-				nameError: "Name is required!",
+				name: "Name is required!",
 			}));
 
 			return;
