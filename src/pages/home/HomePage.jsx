@@ -1,3 +1,4 @@
+import Footer from "../../layouts/Footer";
 import { Navbar } from "../../layouts/Navbar";
 import { AboutSection } from "./sections/about/AboutSection";
 import { ContactSection } from "./sections/contact/ContactSection";
@@ -12,6 +13,7 @@ export function HomePage() {
       <AboutSection />
       <ServicesSection />
       <ContactSection />
+      <Footer />
     </main>
   );
 }
