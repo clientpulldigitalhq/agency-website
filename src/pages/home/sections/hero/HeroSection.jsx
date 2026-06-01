@@ -1,3 +1,5 @@
+// @ts-check
+
 import { ContactButton } from "./ContactButton";
 
 export function HeroSection() {

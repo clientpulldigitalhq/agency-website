@@ -1,3 +1,5 @@
+// @ts-check
+
 export function ContactButton() {
 	return (
 		<button

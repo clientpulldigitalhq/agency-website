@@ -1,3 +1,5 @@
+// @ts-check
+
 import { BsPersonFillCheck } from "react-icons/bs";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
 import { IoIosFlash } from "react-icons/io";

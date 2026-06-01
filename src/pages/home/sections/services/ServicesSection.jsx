@@ -1,3 +1,5 @@
+// @ts-check
+
 import { SERVICES } from "./constants";
 
 export function ServicesSection() {

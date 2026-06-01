@@ -1,3 +1,4 @@
+// @ts-check
 import { ABOUT_AGENCY_INFO } from "./constants";
 
 export function AboutSection() {
@@ -5,10 +6,10 @@ export function AboutSection() {
 		<section className="text-center text-white" id="about">
 			<h2 className="mt-20 font-semibold text-yellow-400">ABOUT US</h2>
 
-			<h2 className="mt-2 font-medium">
+			<h3 className="mt-2 font-medium">
 				A small but focused team building digital solutions that helps
 				businesses grow.
-			</h2>
+			</h3>
 
 			<p className="my-4 px-4 sm:px-40">
 				We are designers and developers based in Ghana — building websites,
@@ -26,7 +27,7 @@ export function AboutSection() {
 						<div className="flex-center flex-col">
 							<div className="flex-center my-2 gap-2">
 								<div>{<Icon className="text-3xl" />}</div>
-								<h3 className="font-medium">{about.title}</h3>
+								<h4 className="font-medium">{about.title}</h4>
 							</div>
 							<p>{about.description}</p>
 						</div>

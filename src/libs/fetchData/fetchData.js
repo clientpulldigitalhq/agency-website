@@ -1,5 +1,8 @@
+// @ts-check
+
 import { fe } from "../../shared/utils/fe";
 import { responseUtil } from "../../shared/utils/response";
+import { tryCatch } from "../../shared/utils/tryCatch";
 import { axiosInstance } from "./axios";
 
 /**
@@ -15,29 +18,30 @@ import { axiosInstance } from "./axios";
  */
 
 /**
+ * @typedef {{
+ * 	message: string
+ * 	status: ErrorCode | SuccessCode
+ * }} ServerResponse
+ */
+
+/**
  */
 /**
- * @template T
- * @typedef {import("../../shared/utils/response").FormattedResponse<T>} FetchDataWithStatus
- * @typedef {(props: FetchDataProps) => {
+ * @typedef {<T>(props: FetchDataProps) => {
  * 	fetch: () => Promise<void>,
  * 	isError: () => boolean,
  * 	isSuccess: () => boolean,
  * 	message: string,
  *  error: string,
  *  data: T,
- *  dataWithStatus: FetchDataWithStatus<T>,
+ *  dataWithStatus: import("../../shared/utils/response").FormattedResponse<T>,
  * 	fetchStatus: FetchStatus
- * 	status: FetchingStatus
  * }} FetchDataType
- */
-
-/**
- * @template T
- * @returns {() => FetchDataType<T>}
+ * @returns {FetchDataType}
  */
 
 function fetchData() {
+	/** @template T */
 	return (payload) => {
 		const localPayload = payload;
 
@@ -45,15 +49,10 @@ function fetchData() {
 		let status = "idle";
 
 		/** @type {T | null} */
-
 		let data = null;
-		/** @type {string | null} */
 
-		/** @type {string | null} */
-		let error = null;
-
-		/** @type {string | null} */
-		let message = null;
+		let error = "";
+		let message = "";
 
 		/** @type {ErrorCode | SuccessCode} */
 		let statusCode = 400;
@@ -67,6 +66,9 @@ function fetchData() {
 
 			const axios = axiosInstance();
 
+			/**
+			 * @type {Promise<import("axios").AxiosResponse<ServerResponse & T>>}
+			 */
 			let promise;
 
 			switch (method) {
@@ -100,7 +102,7 @@ function fetchData() {
 			status = "success";
 			message = resMessage;
 
-			data = rest;
+			data = /** @type {T} */ (rest);
 		}
 
 		return {
@@ -120,14 +122,12 @@ function fetchData() {
 				if (!error) throw Error("No error exists");
 				return error;
 			},
+			/** @returns {T} */
 			get data() {
 				if (!data) throw Error(error ?? "Data not available, call fetch first");
 
 				return data;
 			},
-			/**
-			 * @type {FetchDataWithStatus<T>}
-			 */
 			get dataWithStatus() {
 				if (data) return responseUtil(message, "success", data);
 
@@ -144,8 +144,7 @@ function fetchData() {
 }
 
 /**
- * @template T
- * @returns {FetchDataType<T>()}
+ * @returns {FetchDataType}
  */
 export function createFetchDataClient() {
 	return fetchData();

@@ -1,5 +1,13 @@
+// @ts-check
+
 import { AxiosError } from "axios";
 import { ZodError } from "zod";
+
+/**
+ *
+ * @param {unknown} error
+ * @returns {string}
+ */
 
 export const fe = (error) => {
 	if (typeof error === "string") return error;

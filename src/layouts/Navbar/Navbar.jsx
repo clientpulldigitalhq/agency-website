@@ -1,8 +1,9 @@
+// @ts-check
+
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
-
-import Navlinks from "./Navlinks";
+import { Navlinks } from "./Navlinks";
 
 export function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,11 +28,12 @@ export function Navbar() {
 		<header>
 			<nav className="flex-center justify-between bg-[linear-gradient(to_right,var(--color-brand-muted)_1%,var(--color-brand-dark)_100%)] px-4 py-4 text-white shadow-lg sm:px-10">
 				<div className="bg-green-100 p-1 text-gray-700">LOGO</div>
+
 				<motion.div
 					initial={false}
 					animate={{ x: isDesktop ? 0 : isMenuOpen ? 0 : -100 }}
-					transition={{ duration: "0.3" }}
-					exit={-100}
+					transition={{ duration: 0.3 }}
+					exit={{ x: isDesktop ? 0 : -100 }}
 					className={`fixed top-0 left-0 z-50 ${isMenuOpen ? "block" : " hidden"} min-h-screen w-70 bg-gray-900 sm:static sm:block sm:min-h-0 sm:w-100 sm:bg-transparent`}
 				>
 					<div className="flex justify-end">
@@ -43,7 +45,7 @@ export function Navbar() {
 							<IoMdClose size={30} />
 						</button>
 					</div>
-					<Navlinks styles={"sm:items-center sm:justify-end p-5 sm:gap-8"} />
+					<Navlinks className={"sm:items-center sm:justify-end p-5 sm:gap-8"} />
 				</motion.div>
 				<button
 					type="button"

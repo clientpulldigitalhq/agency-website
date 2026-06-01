@@ -1,3 +1,5 @@
+// @ts-check
+
 import { useContact } from "../../../../features/contact/contact.useContact";
 
 export function ContactForm() {

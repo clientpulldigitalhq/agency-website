@@ -1,3 +1,10 @@
+/**
+ *
+ * @param {object} errors
+ * @param {import("zod").core.$ZodIssue['path']} path
+ * @param {{ message: string }} value
+ */
+
 function set(errors, path, value) {
 	let current = errors;
 
@@ -12,6 +19,11 @@ function set(errors, path, value) {
 		current[key] = value;
 	}
 }
+
+/**
+ *
+ * @param {import("zod").core.$ZodIssue[]} issues
+ */
 
 export function formatZodIssuesToObject(issues) {
 	const errors = {};
