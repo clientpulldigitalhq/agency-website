@@ -5,6 +5,9 @@ export const DEFAULT_CONTACT_PAYLOAD = {
 };
 
 export const DEFAULT_CONTACT_ERRORS = {
+	root: {
+		message: "",
+	},
 	name: {
 		message: "",
 	},

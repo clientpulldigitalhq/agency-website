@@ -6,16 +6,16 @@ import { HeroSection } from "./sections/hero/HeroSection";
 import { ServicesSection } from "./sections/services/ServicesSection";
 
 export function HomePage() {
-  return (
-    <>
-      <main>
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<main>
+				<Navbar />
+				<HeroSection />
+				<AboutSection />
+				<ServicesSection />
+				<ContactSection />
+			</main>
+			<Footer />
+		</>
+	);
 }
