@@ -1,34 +1,32 @@
 @import "tailwindcss";
 
 body {
-	background-color: #134e4a;
+  background-color: var(--color-brand-primary);
 }
 
 @font-face {
-	font-family: "Growland Black";
-	src: url("/fonts/Growland Black.otf");
+  font-family: "Growland Black";
+  src: url("/fonts/Growland Black.otf");
 }
 
 @font-face {
-	font-family: "Growland Black";
-	src: url("/fonts/Growland Bold.otf");
+  font-family: "Growland Black";
+  src: url("/fonts/Growland Bold.otf");
 }
 
 @theme {
+  /* font families */
   --font-growland-black: "Growland Black", sans-serif;
   --font-growland-bold: "Growland Bold", sans-serif;
 
-  /* 
-    Register css variables here and use it globally
-    example: --color-primary: #00cfa2;
-    this enables you to use utility classes like
-    bg-primary
-    text-primary
-    border-primary
-    shadow-primary
-
-    without having to write bg-[#00cfa2] or text-[#00cfa2] all the time
-  */
+  /* colors */
+  --color-brand-primary: #134e4a;
+  --color-brand-secondary: #0d2d2a;
+  --color-brand-accent: #f97316;
+  --color-brand-hover: #e16e1c;
+  --color-brand-accent-secondary: #facc15;
+  --color-brand-muted: #00cfa2;
+  --color-brand-dark: #081826;
 }
 
 @utility flex-center {
