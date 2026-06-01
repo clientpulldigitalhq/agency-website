@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 
+import Navlinks from "./Navlinks";
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -41,19 +43,7 @@ export function Navbar() {
               <IoMdClose size={30} />
             </button>
           </div>
-          <ul
-            className={`sm:flex-center p-5 font-medium *:mb-3 sm:justify-end sm:gap-8 sm:p-0 sm:*:mb-0`}
-          >
-            <li>
-              <a href="#services">Our Services</a>
-            </li>
-            <li>
-              <a href="#contact">Contact Us</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-          </ul>
+          <Navlinks styles={"sm:items-center sm:justify-end p-5 sm:gap-8"} />
         </motion.div>
         <button
           type="button"
