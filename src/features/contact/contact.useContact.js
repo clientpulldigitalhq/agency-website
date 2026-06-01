@@ -26,10 +26,11 @@ import { contactValidator } from "./contact.validators";
 export function useContact() {
 	const [formData, setFormData] = useState({ ...DEFAULT_CONTACT_PAYLOAD });
 	const [formError, setFormError] = useState({ ...DEFAULT_CONTACT_ERRORS });
+	const [successMessage, setSuccessMessage] = useState("");
 	const contactService = useContactService();
 
 	const onSubmit = useCallback(
-		/** @param {React.FormEvent<HTMLFormElement>} e */
+		/** @param {import("react").FormEvent<HTMLFormElement>} e */
 		async function sendMessage(e) {
 			// prevent default behavior of the browser
 			e.preventDefault();
@@ -44,12 +45,18 @@ export function useContact() {
 					),
 				);
 
-			const res = await contactService.sendMessage(parsed.data);
+			const { emailOrPhone: contact, name, message } = parsed.data;
+
+			const res = await contactService.sendMessage({ contact, name, message });
+
 			if (res.error)
 				return setFormError((errors) => ({
 					...errors,
 					root: { message: res.message },
 				}));
+
+			setSuccessMessage(res.message);
+			setFormData({ ...DEFAULT_CONTACT_PAYLOAD });
 		},
 		[formData, contactService],
 	);
@@ -59,7 +66,9 @@ export function useContact() {
 		(name) => {
 			return {
 				value: formData[name],
-				/** @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e */
+				name,
+				autoComplete: "on",
+				/** @param {import("react").ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e */
 				onChange: (e) => {
 					setFormError((errors) => ({ ...errors, [name]: { message: "" } }));
 					setFormData((formData) => ({ ...formData, [name]: e.target.value }));
@@ -74,5 +83,6 @@ export function useContact() {
 		formError,
 		onSubmit,
 		register,
+		successMessage,
 	};
 }

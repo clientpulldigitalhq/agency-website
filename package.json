@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --port 3000",
 		"build": "vite build",
 		"lint": "biome check && tsc -p jsconfig.json --noEmit",
 		"format": "biome check --write",
@@ -13,19 +13,24 @@
 	"dependencies": {
 		"@tailwindcss/vite": "^4.3.0",
 		"axios": "^1.16.1",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"motion": "^12.40.0",
 		"react": "^19.2.6",
 		"react-dom": "^19.2.6",
 		"react-icons": "^5.6.0",
 		"react-router-dom": "^7.16.0",
+		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3",
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^2.4.16",
+		"@types/react": "^19.2.16",
+		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.1",
 		"globals": "^17.6.0",
-		"@biomejs/biome": "^2.4.16",
 		"vite": "^8.0.12"
 	}
 }

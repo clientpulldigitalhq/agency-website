@@ -4,22 +4,23 @@ import { ContactButton } from "./ContactButton";
 
 export function HeroSection() {
 	return (
-		<section className="bg-[linear-gradient(to bottom,var(--color-brand-secondary),var(--color-brand-primary))] px-4 text-center text-white sm:px-10">
-			<div>
-				<h1 className="font-growland-black mt-10 text-4xl font-black sm:text-5xl">
-					YOUR BUSINESS <br />
-					IS GROWING
-				</h1>
-				<h3 className="font-growland-bold mt-2 font-semibold text-yellow-400">
-					CAN YOUR CURRENT SYSTEM KEEP UP?
-				</h3>
-				<p className="my-4 text-xl font-medium sm:px-55">
-					We help businesses grow through websites, workflow systems, and
-					delivery coordination platforms that improve visibility, streamline
-					operations, and create better customer experiences.
-				</p>
+		<section className="bg-linear-to-b grid items-center justify-center my-auto from-brand-primary to-brand-primary  py-20 sm:py-10 sm:min-h-app-height text-center text-neutral">
+			<div className="h-fit max-w-full">
+				<div>
+					<h1 className="font-growland-black text-5xl sm:text-7xl max-w-3xl mx-auto font-black">
+						YOUR BUSINESS IS GROWING
+					</h1>
+					<h3 className="font-growland-bold tracking-tight text-yellow-400">
+						CAN YOUR CURRENT SYSTEM KEEP UP?
+					</h3>
+					<p className="mt-4 text-neutral-secondary tracking-tighter max-w-lg mx-auto">
+						We help businesses grow through websites, workflow systems, and
+						delivery coordination platforms that improve visibility, streamline
+						operations, and create better customer experiences.
+					</p>
+				</div>
+				<ContactButton className="w-fit" />
 			</div>
-			<ContactButton />
 		</section>
 	);
 }

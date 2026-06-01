@@ -3,9 +3,11 @@ import { ContactForm } from "./ContactForm";
 
 export function ContactSection() {
 	return (
-		<section className="px-4 text-center text-white" id="contact">
+		<section className="px-4 py-20 text-center" id="contact">
 			<div>
-				<h2 className="mb-4 font-medium text-yellow-400">CONTACT US</h2>
+				<h2 className="mb-8 text-4xl sm:text-6xl font-medium text-brand-accent-secondary">
+					CONTACT US
+				</h2>
 			</div>
 			<ContactForm />
 		</section>

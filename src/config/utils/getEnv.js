@@ -21,7 +21,8 @@
  */
 
 export function getEnv({ name, required, description = "", isStatic = true }) {
-	let value = process.env[name.trim()];
+	let value;
+	if (!isStatic) process.env[name.trim()];
 	if (isStatic) value = import.meta.env[name.trim()];
 
 	if (required !== false && !value)

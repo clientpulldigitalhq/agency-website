@@ -8,7 +8,7 @@ export function Footer() {
 	return (
 		<footer className="bg-brand-secondary mt-20 p-6">
 			<nav className="mx-auto flex w-full flex-col sm:max-w-110">
-				<ul className="flex-center justify-between">
+				<ul className="flex-center w-fit  gap-x-4 gap-y-2 mx-auto justify-between">
 					{CONTACT_LINKS.map(({ icon: Icon, path, title }) => (
 						<li key={title} className="text-brand-accent-secondary">
 							<a href={path} title={title} target="_blank" rel="noopener">
@@ -20,7 +20,7 @@ export function Footer() {
 				<Navlinks className="flex mt-8 justify-between" />
 			</nav>
 
-			<p className="mt-8 text-center font-light text-white">
+			<p className="mt-8 text-center font-light text-netural">
 				&copy; {new Date().getFullYear()} {BRANDING_NAME}. All right reserved.
 			</p>
 		</footer>

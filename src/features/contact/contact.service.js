@@ -13,6 +13,14 @@ class ContactService {
 		this.apiClient = apiClient;
 	}
 
+	/**
+	 *
+	 * @param {{
+	 *   name: string,
+	 *   contact: string
+	 *   message: string
+	 * }} payload
+	 */
 	async sendMessage(payload) {
 		const client = this.apiClient({
 			uri: apiRoutes.contact.send.uri,
@@ -25,6 +33,7 @@ class ContactService {
 	}
 }
 
-export function createContactService() {
+/** @param {FetchDataType} apiClient */
+export function createContactService(apiClient) {
 	return new ContactService(apiClient);
 }

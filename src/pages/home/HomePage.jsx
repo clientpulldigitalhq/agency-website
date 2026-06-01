@@ -9,7 +9,7 @@ import { ServicesSection } from "./sections/services/ServicesSection";
 
 export function HomePage() {
 	return (
-		<main>
+		<main className="*:px-4">
 			<Navbar />
 			<HeroSection />
 			<AboutSection />

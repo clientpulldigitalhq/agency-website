@@ -19,6 +19,8 @@ body {
 	--font-growland-black: "Growland Black", sans-serif;
 	--font-growland-bold: "Growland Bold", sans-serif;
 
+	--height-app-height: calc(100vh - 4rem);
+
 	/* colors */
 	--color-brand-primary: #134e4a;
 	--color-brand-secondary: #0d2d2a;
@@ -27,6 +29,17 @@ body {
 	--color-brand-accent-secondary: #facc15;
 	--color-brand-muted: #00cfa2;
 	--color-brand-dark: #081826;
+
+	--color-neutral: white;
+	--color-neutral-secondary: var(--color-gray-300);
+
+	--color-success: var(--color-green-600);
+}
+
+@layer base {
+	body {
+		@apply text-neutral;
+	}
 }
 
 @utility flex-center {
@@ -38,7 +51,7 @@ body {
 }
 
 @utility label {
-	@apply mb-4 self-start font-medium;
+	@apply mb-2 self-start font-medium;
 }
 
 @utility errorElement {
