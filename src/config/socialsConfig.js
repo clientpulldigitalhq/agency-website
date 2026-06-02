@@ -5,7 +5,7 @@ const whatsapp = getEnv({ name: "VITE_WHATSAPP_NUMBER" });
 const email = getEnv({ name: "VITE_EMAIL_ADDRESS" });
 
 export const socialsConfig = {
-  github,
-  whatsapp,
-  email,
+	github,
+	whatsapp,
+	email,
 };

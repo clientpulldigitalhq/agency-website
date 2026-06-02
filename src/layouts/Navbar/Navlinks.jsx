@@ -1,15 +1,17 @@
 // @ts-check
 
+import { useSmoothScroll } from "../../shared/hooks/useSmoothScroll";
 import { cn } from "../../shared/utils/cn";
 import { NAV_LINKS } from "./constants";
 
 /**
- * @typedef {import("react").ComponentProps<"ul">} NavlinksProps
- *
+ * @typedef {React.ComponentProps<"ul">} NavlinksProps
  * @param {NavlinksProps} props
  */
 
 export function Navlinks({ className, ...props }) {
+	const scrollTo = useSmoothScroll();
+
 	return (
 		<ul
 			{...props}
@@ -20,7 +22,9 @@ export function Navlinks({ className, ...props }) {
 		>
 			{NAV_LINKS.map((link) => (
 				<li key={link.title}>
-					<a href={link.path}>{link.title}</a>
+					<a href={link.path} onClick={scrollTo(link.path)}>
+						{link.title}
+					</a>
 				</li>
 			))}
 		</ul>
