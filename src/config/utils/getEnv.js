@@ -21,14 +21,12 @@
  */
 
 export function getEnv({ name, required, description = "", isStatic = true }) {
-	let value;
-	if (!isStatic) process.env[name.trim()];
-	if (isStatic) value = import.meta.env[name.trim()];
+  let value;
 
-	if (required !== false && !value)
-		throw Error(
-			`"${name} ${description}" : is a required environment variable but not defined!`,
-		);
+  if (!isStatic) value = process.env[name.trim()];
+  if (isStatic) value = import.meta.env[name.trim()];
 
-	return value;
+  if (required !== false && !value) throw Error(`"${name} ${description}" : is a required environment variable but not defined!`);
+
+  return value;
 }
