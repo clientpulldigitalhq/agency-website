@@ -11,7 +11,12 @@ export function Navbar() {
 	const { isDesktop, isMenuOpen, open, close } = useNavbar();
 
 	return (
-		<header className="bg-linear-to-r sticky top-0 from-brand-muted to-brand-dark ">
+		<motion.header
+			initial={{ y: -100, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: 0.4, ease: "easeOut" }}
+			className="bg-linear-to-r sticky z-2000 top-0 from-brand-muted to-brand-dark "
+		>
 			<nav className="flex-center justify-between py-4 text-white shadow-lg max-w-6xl mx-auto">
 				<div className="bg-green-100 p-1 text-gray-700">LOGO</div>
 
@@ -52,7 +57,7 @@ export function Navbar() {
 					onClick={close}
 				></div>
 			</nav>
-		</header>
+		</motion.header>
 	);
 }
 
