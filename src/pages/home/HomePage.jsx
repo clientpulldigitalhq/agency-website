@@ -1,5 +1,6 @@
 // @ts-check
 
+import ScrollToTop from "../../components/ui/ScrollToTop";
 import { Footer } from "../../layouts/Footer/Footer";
 import { Navbar } from "../../layouts/Navbar/Navbar";
 import { AboutSection } from "./sections/about/AboutSection";
@@ -8,14 +9,15 @@ import { HeroSection } from "./sections/hero/HeroSection";
 import { ServicesSection } from "./sections/services/ServicesSection";
 
 export function HomePage() {
-	return (
-		<main className="*:px-4">
-			<Navbar />
-			<HeroSection />
-			<AboutSection />
-			<ServicesSection />
-			<ContactSection />
-			<Footer />
-		</main>
-	);
+  return (
+    <main className="*:px-4">
+      <ScrollToTop />
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <ContactSection />
+      <Footer />
+    </main>
+  );
 }
