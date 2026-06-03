@@ -1,6 +1,7 @@
 // @ts-check
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
 import { ScrollToTop } from "../../components/ui/ScrollToTop";
 import { Footer } from "../../layouts/Footer/Footer";
 import { Navbar } from "../../layouts/Navbar/Navbar";
@@ -10,37 +11,45 @@ import { HeroSection } from "./sections/hero/HeroSection";
 import { ServicesSection } from "./sections/services/ServicesSection";
 
 export function HomePage() {
-  useEffect(() => {
-    const allSections = document.querySelectorAll(".section");
+	useEffect(() => {
+		const allSections = document.querySelectorAll(".section");
 
-    const observeSections = function (entries, observer) {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+		/** 
+     @param {IntersectionObserverEntry[]} entries
+     @param {IntersectionObserver} observer
 
-        entry.target.classList.remove("section--hidden");
+     */
+		const observeSections = (entries, observer) => {
+			entries.forEach((entry) => {
+				if (!entry.isIntersecting) return;
 
-        observer.unobserve(entry.target);
-      });
-    };
+				entry.target.classList.remove("section--hidden");
 
-    const sectionsObserver = new IntersectionObserver(observeSections, { root: null, threshold: 0.15 });
+				observer.unobserve(entry.target);
+			});
+		};
 
-    allSections.forEach((section) => {
-      section.classList.add("section--hidden");
+		const sectionsObserver = new IntersectionObserver(observeSections, {
+			root: null,
+			threshold: 0.15,
+		});
 
-      sectionsObserver.observe(section);
-    });
-  }, []);
+		allSections.forEach((section) => {
+			section.classList.add("section--hidden");
 
-  return (
-    <main className="*:px-4">
-      <ScrollToTop />
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <ContactSection />
-      <Footer />
-    </main>
-  );
+			sectionsObserver.observe(section);
+		});
+	}, []);
+
+	return (
+		<main className="*:px-4">
+			<ScrollToTop />
+			<Navbar />
+			<HeroSection />
+			<AboutSection />
+			<ServicesSection />
+			<ContactSection />
+			<Footer />
+		</main>
+	);
 }
