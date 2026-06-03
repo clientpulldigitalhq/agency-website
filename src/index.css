@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+body {
+	background-color: var(--color-brand-primary);
+}
+
+.section {
+	transition:
+		transform 5s,
+		opacity 1s;
+}
+
+@font-face {
+	font-family: "Growland Black";
+	src: url("/fonts/Growland Black.otf");
+}
+
+@font-face {
+	font-family: "Growland Black";
+	src: url("/fonts/Growland Bold.otf");
+}
+
+@theme {
+	/* font families */
+	--font-growland-black: "Growland Black", sans-serif;
+	--font-growland-bold: "Growland Bold", sans-serif;
+
+	--height-app-height: calc(100vh - 4rem);
+
+	/* colors */
+	--color-brand-primary: #134e4a;
+	--color-brand-secondary: #0d2d2a;
+	--color-brand-accent: #f97316;
+	--color-brand-accent-hover: #e16e1c;
+	--color-brand-accent-secondary: #facc15;
+	--color-brand-muted: #00cfa2;
+	--color-brand-dark: #081826;
+
+	--color-neutral: white;
+	--color-neutral-secondary: var(--color-gray-300);
+
+	--color-success: var(--color-green-600);
+}
+
+@layer base {
+	body {
+		@apply text-neutral;
+	}
+}
+
+@utility flex-center {
+	@apply flex items-center;
+}
+
+@utility input-container {
+	@apply flex w-full flex-col;
+}
+
+@utility label {
+	@apply mb-2 self-start font-medium;
+}
+
+@utility errorElement {
+	@apply mt-2 self-start font-medium text-red-300;
+}
+
+@utility section--hidden {
+	@apply translate-y-30 opacity-0;
+}
