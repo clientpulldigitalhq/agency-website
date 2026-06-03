@@ -19,8 +19,8 @@ export function ScrollToTop() {
   }, [hasPassThredHold]);
   return (
     hasPassThredHold && (
-      <button type="button" className="bg-brand-accent p-2 rounded-full z-50 bottom-2 cursor-pointer sm:bottom-5 right-5  fixed  hover:bg-brand-accent-hover transition-colors duration-300" onClick={scrollToTop}>
-        <BiArrowToTop className="size-6" />
+      <button type="button" className="bg-brand-accent px-1 py-2  rounded-full z-50 bottom-2 cursor-pointer sm:bottom-5 right-5  fixed  hover:bg-brand-accent-hover transition-colors duration-300" onClick={scrollToTop}>
+        <BiArrowToTop className="size-4 sm:size-6" />
       </button>
     )
   );
