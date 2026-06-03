@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BiArrowToTop } from "react-icons/bi";
 
-function ScrollToTop() {
+export function ScrollToTop() {
   const [hasPassThredHold, setHasPassedThresHold] = useState(window.scrollY > 400);
 
   const scrollToTop = function () {
@@ -25,5 +25,3 @@ function ScrollToTop() {
     )
   );
 }
-
-export default ScrollToTop;

@@ -1,6 +1,6 @@
 // @ts-check
 
-import ScrollToTop from "../../components/ui/ScrollToTop";
+import { ScrollToTop } from "../../components/ui/ScrollToTop";
 import { Footer } from "../../layouts/Footer/Footer";
 import { Navbar } from "../../layouts/Navbar/Navbar";
 import { AboutSection } from "./sections/about/AboutSection";
