@@ -1,9 +1,19 @@
 // @ts-check
+
+import { motion } from "motion/react";
+
 import { ABOUT_AGENCY_INFO } from "./constants";
 
 export function AboutSection() {
 	return (
-		<section className="section  text-center" id="about">
+		<motion.section
+			initial={{ y: "60", opacity: 0 }}
+			whileInView={{ y: "0", opacity: 1 }}
+			transition={{ delay: 0.3, ease: "easeInOut" }}
+			viewport={{ once: true }}
+			className="section  text-center"
+			id="about"
+		>
 			<div className="py-20">
 				<h2 className="mb-2 text-4xl sm:text-6xl tracking-tight font-semibold text-brand-accent-secondary">
 					ABOUT US
@@ -40,6 +50,6 @@ export function AboutSection() {
 					))}
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	);
 }

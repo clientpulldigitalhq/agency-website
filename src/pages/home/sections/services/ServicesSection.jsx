@@ -1,10 +1,19 @@
 // @ts-check
 
+import { motion } from "motion/react";
+
 import { SERVICES } from "./constants";
 
 export function ServicesSection() {
 	return (
-		<section id="services" className="section py-20">
+		<motion.section
+			initial={{ y: "60", opacity: 0 }}
+			whileInView={{ y: "0", opacity: 1 }}
+			transition={{ delay: 0.3, ease: "easeInOut" }}
+			viewport={{ once: true }}
+			id="services"
+			className=" py-20"
+		>
 			<h2 className="text-4xl mb-6 text-center sm:text-6xl font-semibold text-brand-accent-secondary">
 				SERVICES
 			</h2>
@@ -27,6 +36,6 @@ export function ServicesSection() {
 					</li>
 				))}
 			</ul>
-		</section>
+		</motion.section>
 	);
 }

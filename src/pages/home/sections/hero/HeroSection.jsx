@@ -1,11 +1,12 @@
 // @ts-check
 
 import { motion } from "motion/react";
+
 import { ContactButton } from "./ContactButton";
 
 export function HeroSection() {
 	return (
-		<section className="section bg-linear-to-b grid items-center justify-center my-auto from-brand-primary to-brand-primary  py-20 sm:py-10 sm:min-h-app-height text-center text-neutral">
+		<section className="bg-linear-to-b grid items-center justify-center my-auto from-brand-primary to-brand-primary  py-20 sm:py-10 sm:min-h-app-height text-center text-neutral">
 			<div className="h-fit max-w-full">
 				<div>
 					<motion.h1
