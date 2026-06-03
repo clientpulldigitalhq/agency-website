@@ -4,7 +4,7 @@ import { SERVICES } from "./constants";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="section py-20">
       <h2 className="text-4xl mb-6 text-center sm:text-6xl font-semibold text-brand-accent-secondary">SERVICES</h2>
 
       <ul className="grid h-fit gap-y-12 max-w-2xl mx-auto">

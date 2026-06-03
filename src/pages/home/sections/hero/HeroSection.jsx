@@ -5,7 +5,7 @@ import { ContactButton } from "./ContactButton";
 
 export function HeroSection() {
   return (
-    <section className="bg-linear-to-b grid items-center justify-center my-auto from-brand-primary to-brand-primary  py-20 sm:py-10 sm:min-h-app-height text-center text-neutral">
+    <section className="section bg-linear-to-b grid items-center justify-center my-auto from-brand-primary to-brand-primary  py-20 sm:py-10 sm:min-h-app-height text-center text-neutral">
       <div className="h-fit max-w-full">
         <div>
           <motion.h1 initial={{ y: "-50%", opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.1, ease: "linear" }} viewport={{ once: true }} className="font-growland-black text-5xl sm:text-7xl max-w-3xl mx-auto font-black">

@@ -3,7 +3,7 @@ import { ABOUT_AGENCY_INFO } from "./constants";
 
 export function AboutSection() {
   return (
-    <section className="text-center" id="about">
+    <section className="section  text-center" id="about">
       <div className="py-20">
         <h2 className="mb-2 text-4xl sm:text-6xl tracking-tight font-semibold text-brand-accent-secondary">ABOUT US</h2>
 
