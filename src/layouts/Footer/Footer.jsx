@@ -17,7 +17,7 @@ export function Footer() {
 						</li>
 					))}
 				</ul>
-				<Navlinks className="flex mt-8 justify-between -ml-4" />
+				<Navlinks className="flex mt-8 justify-between sm:-ml-4 -ml-3" />
 			</nav>
 
 			<p className="mt-8 text-center font-light text-netural ">
