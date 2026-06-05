@@ -3,33 +3,38 @@
 import { useCallback, useEffect, useState } from "react";
 
 export function useSmoothScroll() {
-	const [link, setLink] = useState("");
+  const [link, setLink] = useState("");
 
-	useEffect(() => {
-		if (!link) return;
+  useEffect(() => {
+    if (!link) return;
 
-		const section = document.querySelector(link);
-		if (!section) return setLink("");
+    const section = document.querySelector(link);
+    if (!section) return setLink("");
 
-		section.scrollIntoView({ behavior: "smooth" });
-		setLink("");
-	}, [link]);
+    section.scrollIntoView({ behavior: "smooth" });
+    setLink("");
+  }, [link]);
 
-	return useCallback(
-		/** @param {string} link */
-		(link) => {
-			const anchor = link.replace(/^\/*/, "");
-			if (!anchor?.startsWith("#")) return;
+  return useCallback(
+    /** @param {string} link 
+     * @param {()=> void } [closeMenu]
+     
+    */
+    (link, closeMenu = () => {}) => {
+      const anchor = link.replace(/^\/*/, "");
 
-			return (
-				/** @type {React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>} */ e,
-			) => {
-				e?.preventDefault();
-				e?.stopPropagation();
+      if (!anchor?.startsWith("#")) return;
 
-				setLink(anchor);
-			};
-		},
-		[],
-	);
+      return (/** @type {React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>} */ e) => {
+        e?.preventDefault();
+        e?.stopPropagation();
+
+        setLink(anchor);
+
+        closeMenu();
+      };
+    },
+    [],
+  );
+  ``;
 }
