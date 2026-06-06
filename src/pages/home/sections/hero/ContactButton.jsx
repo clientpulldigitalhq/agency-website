@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import React from "react";
+
 import { useSmoothScroll } from "../../../../shared/hooks/useSmoothScroll";
 import { routes } from "../../../../shared/routes/routes";
 import { cn } from "../../../../shared/utils/cn";

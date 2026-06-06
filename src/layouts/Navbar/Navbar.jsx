@@ -1,9 +1,8 @@
 // @ts-check
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
-
+import { useNavbar } from "../../context/NavbarProvider";
 import { cn } from "../../shared/utils/cn";
 import { Navlinks } from "./Navlinks";
 
@@ -59,41 +58,4 @@ export function Navbar() {
 			</nav>
 		</motion.header>
 	);
-}
-
-function useNavbar() {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [isDesktop, setIsDesktop] = useState(window.innerWidth > 640);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsDesktop(window.innerWidth > 640);
-			setIsMenuOpen(false);
-		};
-
-		/** @param {KeyboardEvent} e */
-		const handleKeyDown = (e) => {
-			if (e.key === "Escape") setIsMenuOpen(false);
-		};
-
-		window.addEventListener("resize", handleResize);
-		window.addEventListener("keydown", handleKeyDown);
-
-		// avoid scrolling when the Menu is open
-		document.body.style.overflow = isMenuOpen ? "hidden" : "";
-
-		return () => {
-			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("keydown", handleKeyDown);
-
-			document.body.style.overflow = "";
-		};
-	}, [isMenuOpen]);
-
-	return {
-		close: () => setIsMenuOpen(false),
-		open: () => setIsMenuOpen(true),
-		isMenuOpen,
-		isDesktop,
-	};
 }

@@ -1,5 +1,6 @@
 // @ts-check
 
+import { useNavbar } from "../../context/NavbarProvider";
 import { useSmoothScroll } from "../../shared/hooks/useSmoothScroll";
 import { cn } from "../../shared/utils/cn";
 import { NAV_LINKS } from "./constants";
@@ -12,6 +13,7 @@ import { NAV_LINKS } from "./constants";
 export function Navlinks({ className, ...props }) {
 	const scrollTo = useSmoothScroll();
 
+	const { close } = useNavbar();
 	return (
 		<ul
 			{...props}
@@ -22,7 +24,7 @@ export function Navlinks({ className, ...props }) {
 		>
 			{NAV_LINKS.map((link) => (
 				<li key={link.title}>
-					<a href={link.path} onClick={scrollTo(link.path)}>
+					<a href={link.path} onClick={scrollTo(link.path, close)}>
 						{link.title}
 					</a>
 				</li>

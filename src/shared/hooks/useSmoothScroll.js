@@ -16,9 +16,13 @@ export function useSmoothScroll() {
 	}, [link]);
 
 	return useCallback(
-		/** @param {string} link */
-		(link) => {
+		/** @param {string} link 
+     * @param {()=> void } [closeMenu]
+     
+    */
+		(link, closeMenu = () => {}) => {
 			const anchor = link.replace(/^\/*/, "");
+
 			if (!anchor?.startsWith("#")) return;
 
 			return (
@@ -28,6 +32,8 @@ export function useSmoothScroll() {
 				e?.stopPropagation();
 
 				setLink(anchor);
+
+				closeMenu();
 			};
 		},
 		[],
